@@ -1476,6 +1476,8 @@ zvol_os_create_minor(const char *name)
 
 	blk_queue_physical_block_size(zv->zv_zso->zvo_queue,
 	    zv->zv_volblocksize);
+	blk_queue_logical_block_size(zv->zv_zso->zvo_queue,
+	    zv->zv_volblocksize);
 	blk_queue_io_opt(zv->zv_zso->zvo_queue, zv->zv_volblocksize);
 	blk_queue_max_discard_sectors(zv->zv_zso->zvo_queue,
 	    (zvol_max_discard_blocks * zv->zv_volblocksize) >> 9);
